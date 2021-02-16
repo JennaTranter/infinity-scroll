@@ -31,7 +31,7 @@ function displayPhotos() {
             src: photo.urls.regular,
             alt: photo.alt_description,
             title: photo.alt_description
-        })
+        });
         // Put <img> inside <a>, then put both inside imageContainer Element
         item.appendChild(img);
         imageContainer.appendChild(item);
@@ -48,6 +48,13 @@ displayPhotos();
         // Catch error here
     }
 }
+
+// Check to see if scrolling near bottom of page and load more photos
+window.addEventListener('scroll', () => {
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 1000) {
+        getPhotos();
+    }
+});
 
 // On load
 getPhotos();
